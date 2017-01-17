@@ -17,15 +17,18 @@ public void setup()
 
 public boolean palindrome(String word)
 {
-  String wordToCheck = new String();
-  String moddedWord = new String();
-  wordToCheck = reverse(word);
-  wordToCheck = noSpaces(wordToCheck);
-  wordToCheck = noCapitals(wordToCheck);
-  moddedWord = noSpaces(word);
-  moddedWord = noCapitals(word);
+  String wordToModify = new String();		//Reversed, other operations
+  String originalWordModded = new String(word);	//Non-reversed, other operations
 
-  if (wordToCheck.equals(moddedWord)) {
+  wordToModify = reverse(word);
+  wordToModify = noSpaces(wordToModify);
+  wordToModify = noCapitals(wordToModify);
+  wordToModify = noNonLetters(wordToModify);
+  originalWordModded = noSpaces(originalWordModded);
+  originalWordModded = noCapitals(originalWordModded);
+  originalWordModded = noNonLetters(originalWordModded);
+
+  if (wordToModify.equals(originalWordModded)) {
     return true;
   }
   return false;
@@ -57,4 +60,18 @@ public String noSpaces(String sWord){
 
 public String noCapitals(String sWord){
 	return sWord.toLowerCase();
+}
+
+public String noNonLetters(String sWord) {
+	String onlyLetters = new String();
+  	for (int i = 0; i < sWord.length(); i++) {
+    	char c = sWord.charAt(i);
+	    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+	        onlyLetters = onlyLetters + sWord.substring(i,i+1);
+    	}
+    	else {
+
+    	}
+  	}
+  return onlyLetters;
 }
